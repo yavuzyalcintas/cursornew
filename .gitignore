@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+
+# testing
+/coverage
+.nyc_output
+
+# next.js
+/.next/
+/out/
+.next/
+next-env.d.ts
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+*.pem
+.idea/
+.vscode/
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
+
+# debug
+npm-debug.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Supabase
+.supabase/
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+
+# storybook
+storybook-static/
+
+# Cache
+.cache/
+
+# Dependency directories
+node_modules
+.pnpm-store/
+
+# Local env files
+.env*.local

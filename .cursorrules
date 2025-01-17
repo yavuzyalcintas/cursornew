@@ -1,0 +1,280 @@
+# Cursor AI Rules for cursor.new
+
+## Project Context
+
+This is a Next.js 13+ web application for project initialization, using TypeScript, Tailwind CSS, and ShadcN UI components. The project uses Supabase for backend services.
+
+## Code Generation Rules
+
+### General Guidelines
+
+- Generate clean, readable, and maintainable code
+- Follow TypeScript best practices with strict type checking
+- Implement responsive design using Tailwind CSS
+- Use ShadcN UI components when available
+- Follow Next.js 13+ app directory conventions
+- Ensure all code is properly typed with TypeScript
+- Keep functions small and focused on single responsibility
+- Use pnpm for package management (no npm commands)
+
+### Supabase Database Rules
+
+- Create a new migration file for each database change
+- Never modify existing migration files
+- Follow the naming pattern: `YYYYMMDDHHMMSS_descriptive_name.sql`
+- Keep migrations atomic and focused on a single change
+- Include both `up` and `down` migrations
+- Document breaking changes in migration files
+- Test migrations in development before applying to production
+- Update types after each migration using `supabase gen types`
+
+### Supabase Services and Hooks Rules
+
+- All Supabase queries must be implemented in `lib/supabase/services`
+- Each entity should have its own service class extending BaseService
+- Use singleton pattern for service instances
+- Implement React Query hooks in `lib/hooks` directory
+- Follow the naming pattern: `use[Entity]` for hooks
+- Handle errors using the BaseService error handling
+- Use proper TypeScript types from `database.types.ts`
+- Implement optimistic updates where appropriate
+- Cache invalidation should be handled in mutation hooks
+- Use proper React Query configuration for caching
+
+### Migration File Structure
+
+```sql
+-- Migration: [descriptive name]
+-- Created at: [timestamp]
+-- Description: [brief description of changes]
+
+-- Up Migration
+create table if not exists public.example (
+  id uuid default gen_random_uuid() primary key,
+  created_at timestamptz default now()
+);
+
+-- Down Migration
+drop table if exists public.example;
+```
+
+### Component Rules
+
+```typescript
+// FOLLOW THIS PATTERN
+const ComponentName: React.FC<ComponentProps> = ({ prop1, prop2 }) => {
+  // Hooks at the top
+  const [state, setState] = useState<StateType>();
+
+  // Event handlers after hooks
+  const handleEvent = () => {
+    // Implementation
+  };
+
+  return (
+    <div className="[tailwind-classes-organized-by-category]">
+      {/* Component content */}
+    </div>
+  );
+};
+```
+
+### Type Definitions
+
+```typescript
+// FOLLOW THIS PATTERN
+interface ComponentProps {
+  required: string;
+  optional?: number;
+  callback: (param: Type) => void;
+}
+
+// AVOID
+interface Props {
+  r: string;
+  o?: number;
+  cb: (p: any) => void;
+}
+```
+
+### File Structure
+
+Follow this structure for new files:
+
+```typescript
+// 1. Imports
+import { type Dependencies } from "@/types";
+import { utilities } from "@/lib/utils";
+
+// 2. Type definitions
+interface ComponentProps {
+  // Props definition
+}
+
+// 3. Constants
+const CONSTANTS = {
+  // Constants definition
+};
+
+// 4. Component/Function definition
+export function Component() {
+  // Implementation
+}
+```
+
+### Tailwind Classes Organization
+
+```typescript
+// FOLLOW THIS PATTERN
+className="
+  flex items-center justify-between  // Layout
+  p-4 m-2                           // Spacing
+  bg-white rounded-lg               // Visual
+  hover:bg-gray-50                  // Interactive
+  transition-all duration-200       // Animation
+"
+```
+
+### Documentation Requirements
+
+```typescript
+/**
+ * Component/function description
+ * @param {Type} paramName - Parameter description
+ * @returns {ReturnType} Return value description
+ * @throws {ErrorType} Error description if applicable
+ */
+```
+
+### State Management
+
+- Use React hooks for local state
+- Implement Supabase for persistent data
+- Use React Context for shared UI state
+- Keep state close to where it's used
+
+### Testing Requirements
+
+- Write tests for all new features
+- Follow Arrange-Act-Assert pattern
+- Test edge cases and error scenarios
+- Mock external dependencies
+
+### Security Rules
+
+- Never expose API keys in client code
+- Use proper authentication checks
+- Validate all user inputs
+- Sanitize data before rendering
+- Use proper CORS policies
+
+### Performance Guidelines
+
+- Implement proper code splitting
+- Use Next.js Image component for images
+- Implement proper caching strategies
+- Minimize bundle size
+- Use proper lazy loading
+
+### Error Handling
+
+```typescript
+// FOLLOW THIS PATTERN
+try {
+  await someAsyncOperation();
+} catch (error) {
+  if (error instanceof KnownError) {
+    handleSpecificError(error);
+  } else {
+    logError(error);
+    throw new ApplicationError("Meaningful message");
+  }
+}
+```
+
+### API Routes
+
+```typescript
+// FOLLOW THIS PATTERN
+export async function POST(req: Request) {
+  try {
+    const data = await req.json();
+    // Validate input
+    // Process request
+    return Response.json({ success: true });
+  } catch (error) {
+    return Response.json(
+      { error: "Meaningful error message" },
+      { status: 400 }
+    );
+  }
+}
+```
+
+### Form Handling
+
+```typescript
+// FOLLOW THIS PATTERN
+const form = useForm<FormData>({
+  resolver: zodResolver(formSchema),
+  defaultValues: {
+    // Default values
+  },
+});
+```
+
+### Constants and Configuration
+
+```typescript
+// FOLLOW THIS PATTERN
+export const CONFIG = {
+  API_VERSION: "v1",
+  MAX_ITEMS: 100,
+  SUPPORTED_PLATFORMS: ["web", "mobile", "desktop"] as const,
+} as const;
+```
+
+### Import Order
+
+1. React and Next.js imports
+2. External dependencies
+3. Internal components
+4. Internal utilities
+5. Types
+6. Styles
+
+### File Naming
+
+- React components: PascalCase.tsx
+- Utilities: camelCase.ts
+- Types: PascalCase.types.ts
+- Tests: ComponentName.test.tsx
+- Pages: page.tsx (Next.js 13+ convention)
+- Layouts: layout.tsx
+- Loading states: loading.tsx
+
+### Directory Structure
+
+Maintain the Next.js 13+ app directory structure:
+
+```
+app/
+  (auth)/
+  api/
+  projects/
+components/
+  ui/
+  forms/
+  projects/
+  shared/
+```
+
+### Commit Message Format
+
+```
+type(scope): description
+
+[optional body]
+
+[optional footer]
+```

@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Improved base typography and accessibility */
+@layer base {
+  html {
+    font-size: 16px; /* Base font size */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-size: 1.125rem; /* 18px base body size */
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* Improved heading scale */
+  h1 {
+    font-size: 2.5rem; /* 40px */
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem; /* 32px */
+    line-height: 1.3;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.75rem; /* 28px */
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.4;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Better link accessibility */
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Focus states for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Improved form element readability */
+  input, textarea, select {
+    font-size: 1.125rem; /* Increased from 1rem */
+    line-height: 1.5;
+  }
+
+  /* Project config specific typography */
+  .config-section-title {
+    @apply text-2xl font-semibold tracking-tight mb-2;
+  }
+
+  .config-section-description {
+    @apply text-lg text-muted-foreground mb-6;
+  }
+
+  .config-label {
+    @apply text-base font-medium mb-2;
+  }
+
+  .config-helper-text {
+    @apply text-sm text-muted-foreground mt-1.5;
+  }
+
+  .config-card-title {
+    @apply text-lg font-medium;
+  }
+
+  .config-card-description {
+    @apply text-base text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 84.8 85.2% 34.5%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 84.8 85.2% 34.5%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 82.7 78% 55.5%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 82.7 78% 55.5%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

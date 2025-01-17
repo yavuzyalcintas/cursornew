@@ -1,0 +1,21 @@
+# https://cursor.new robots.txt
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+Allow: /blog/
+
+# Block access to API routes and private content
+Disallow: /api/
+Disallow: /private/
+Disallow: /blog/draft/
+
+# Block specific crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# Sitemap location
+Sitemap: https://cursor.new/sitemap.xml 
