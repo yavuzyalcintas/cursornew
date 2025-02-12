@@ -46,10 +46,8 @@ export function ProjectConfigContainer() {
 
   const handlePackagesSelect = (packages: string[]) => {
     setPackages(packages);
-    if (packages.length > 0) {
-      setCompletedSteps((prev) => new Set([...prev, "packages"]));
-      setCurrentStep("documents");
-    }
+    setCompletedSteps((prev) => new Set([...prev, "packages"]));
+    setCurrentStep("documents");
   };
 
   const isStepAccessible = (step: ConfigStep): boolean => {
